@@ -4,6 +4,7 @@ return {
     opts = {
       servers = {
         tsserver = {
+          -- disable = true,
           format = {
             enable = false,
           },

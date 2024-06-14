@@ -29,7 +29,7 @@ return {
         nmap('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
         nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
         nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-
+        nmap('<leader>v', ':vsplit | lua vim.lsp.buf.definition()<CR>', 'GD - vertical screen')
         -- See `:help K` for why this keymap
         nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
         -- nmap('<C-k>', '<Nop>', 'Signature Documentation')
