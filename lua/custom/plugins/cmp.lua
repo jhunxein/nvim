@@ -32,6 +32,7 @@ return {
           elseif luasnip.expand_or_jumpable() then
             luasnip.expand_or_jump()
           else
+            print (require('codeium.virtual_text').status_string())
             fallback()
           end
         end, { 'i', 's' }),
@@ -48,6 +49,7 @@ return {
       sources = {
         { name = 'nvim_lsp' },
         { name = 'luasnip' },
+        { name = 'codeium' },
       },
     }
   end,

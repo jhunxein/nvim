@@ -43,10 +43,22 @@ local customTheme = function()
   }
 end
 
+local function codeium_status_string()
+  return require('codeium.virtual_text').status_string()
+end
+
 return {
   -- Set lualine as statusline
   'nvim-lualine/lualine.nvim',
   opts = {
+    sections = {
+      lualine_a = { 'mode' },
+      lualine_b = { 'branch', 'diff', 'diagnostics' },
+      lualine_c = { 'filename' },
+      lualine_x = { 'encoding', 'fileformat', 'filetype', codeium_status_string },
+      lualine_y = { 'progress' },
+      lualine_z = { 'location' },
+    },
     options = {
       icons_enabled = false,
       theme = customTheme,
