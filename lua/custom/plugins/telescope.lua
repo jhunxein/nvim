@@ -13,6 +13,8 @@ return {
     { '<leader>fgc', '<cmd>Telescope git_commits<cr>', desc = 'Find git commits' },
     { '<leader>fgb', '<cmd>Telescope git_branches<cr>', desc = 'Find git branches' },
 
+    { '<leader>fh', '<cmd>Telescope help_tags<cr>', desc = 'Search into nvim help' },
+
     {
       '<leader>/',
       function()
