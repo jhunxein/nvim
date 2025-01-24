@@ -15,22 +15,20 @@ vim.api.nvim_create_autocmd({ 'TermOpen', 'TermEnter' }, {
   callback = function()
     vim.opt.number = false
     vim.opt.relativenumber = false
+    vim.o.autowrite = false
+    vim.o.hidden = true
+    vim.o.confirm = false
   end,
   group = nvim_terminal,
 })
 
 vim.api.nvim_create_autocmd({ 'TermClose', 'TermLeave' }, {
-  callback = function(evt, opts)
+  callback = function()
     vim.opt.number = true
     vim.opt.relativenumber = true
-
-    for index, value in ipairs(evt) do
-      print(value)
-    end
-
-    for index, value in pairs(evt) do
-      print(value)
-    end
+    vim.o.autowrite = false
+    vim.o.hidden = false
+    vim.o.confirm = true
   end,
   group = nvim_terminal,
 })
