@@ -131,7 +131,17 @@ return {
         }
       },
       svelte = {},
-      tailwindcss = {},
+      tailwindcss = {
+        filetypes = {
+          'html',
+          'javascript',
+          'javascriptreact',
+          'typescript',
+          'typescriptreact',
+          'vue',
+          'svelte',
+        },
+      },
       lua_ls = {
         -- cmd = {...},
         -- capabilities = {},
