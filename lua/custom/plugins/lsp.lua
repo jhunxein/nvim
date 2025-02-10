@@ -120,12 +120,17 @@ return {
         },
       },
       volar = {},
+      ruff = {},
       pyright = {
         settings = {
+          pyright = {
+            disableOrganizeImports = true,
+          },
           python = {
             analysis = {
               autoSearchPaths = true,
-              useLibraryCodeForTypes = true
+              useLibraryCodeForTypes = true,
+              ignore = {'*'}
             }
           }
         }
