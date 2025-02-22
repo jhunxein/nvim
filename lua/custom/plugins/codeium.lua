@@ -11,6 +11,7 @@ return {
       enabled = true,
       default_filetype_enabled = false,
       filetypes = {
+        java = true,
         html = true,
         css = true,
         python = true,

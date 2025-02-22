@@ -1,7 +1,7 @@
 return {
   'mhartington/formatter.nvim',
   keys = {
-    { '<leader>fp', '<cmd>Format<cr>', desc = 'Format file' },
+    { '<leader>fp', '<cmd>Format<cr>', desc = 'Formatter: Format file' },
   },
   opts = function()
     -- Utilities for creating configurations

@@ -7,6 +7,6 @@ return {
     { open_cmd = 'noswapfile vnew' },
   },
   keys = {
-    { '<leader>Sr', '<cmd>lua require("spectre").open()<CR>', desc = 'Replace in files' },
+    { '<leader>sr', '<cmd>lua require("spectre").open()<CR>', desc = 'Replace: string in text files' },
   },
 }

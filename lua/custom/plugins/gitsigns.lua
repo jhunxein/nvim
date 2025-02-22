@@ -15,44 +15,51 @@ return {
     on_attach = function(bufnr)
       -- don't override the built-in and fugitive keymaps
       local gs = package.loaded.gitsigns
+      local nmap = require('core.util').map('n', 'Git: ', bufnr)
 
-      vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk, { buffer = bufnr, desc = 'Preview git hunk' })
-      vim.keymap.set('n', '<leader>hs', gs.stage_hunk, { desc = 'Git stage' })
-      vim.keymap.set('n', '<leader>hS', gs.stage_buffer, { desc = 'Git stage buffer ' })
-      vim.keymap.set('v', '<leader>hs', function()
+      nmap('<leader>gp', require('gitsigns').preview_hunk, 'Preview git hunk')
+
+      nmap('<leader>gs', gs.stage_hunk, 'Stage')
+      nmap('<leader>gr', gs.reset_hunk, 'Reset')
+      vim.keymap.set('v', '<leader>gs', function()
         gs.stage_hunk { vim.fn.line '.', vim.fn.line 'v' }
-      end, { desc = 'Git stage' })
+      end, { desc = 'Git: Stage' })
 
-      vim.keymap.set('n', '<leader>hr', gs.reset_hunk, { desc = 'Git reset' })
-      vim.keymap.set('v', '<leader>hr', function()
+      vim.keymap.set('v', '<leader>gr', function()
         gs.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
-      end, { desc = 'Git reset' })
-      vim.keymap.set('n', '<leader>hR', gs.reset_buffer, { desc = 'Git reset buffer' })
+      end, { desc = 'Git: Reset' })
 
-      vim.keymap.set('n', '<leader>hu', gs.undo_stage_hunk, { desc = 'Git undo' })
-      vim.keymap.set('n', '<leader>hd', gs.diffthis, { desc = 'Git diff' })
-      vim.keymap.set('n', '<leader>hD', function()
+      nmap('<leader>gS', gs.stage_buffer, 'Stage buffer ')
+      nmap('<leader>gR', gs.reset_buffer, 'Reset buffer')
+      nmap('<leader>gu', gs.undo_stage_hunk, 'Undo')
+      nmap('<leader>gd', gs.diffthis, 'Diff file')
+      nmap('<leader>gD', function()
         gs.diffthis '~'
-      end, { desc = 'Git diff' })
+      end, 'Diff')
 
-      vim.keymap.set({ 'n', 'v' }, ']c', function()
+      -- Navigation
+      vim.keymap.set('n', 'g]', function()
         if vim.wo.diff then
-          return ']c'
+          vim.cmd.normal { 'g]', bang = true }
+        else
+          gs.nav_hunk 'next'
         end
-        vim.schedule(function()
-          gs.next_hunk()
-        end)
-        return '<Ignore>'
-      end, { expr = true, buffer = bufnr, desc = 'Jump to next hunk' })
-      vim.keymap.set({ 'n', 'v' }, '[c', function()
+      end, { desc = 'Git: next hunk' })
+
+      vim.keymap.set('n', 'g[', function()
         if vim.wo.diff then
-          return '[c'
+          vim.cmd.normal { 'g[', bang = true }
+        else
+          gs.nav_hunk 'prev'
         end
-        vim.schedule(function()
-          gs.prev_hunk()
-        end)
-        return '<Ignore>'
-      end, { expr = true, buffer = bufnr, desc = 'Jump to previous hunk' })
+      end, { desc = 'Git: previous hunk' })
+      --
+      -- Toggles
+      nmap('<leader>gt', gs.toggle_deleted, 'Toggle deleted')
+      nmap('<leader>gw', gs.toggle_word_diff, 'Toggle word diff')
+
+      -- Text object
+      vim.keymap.set({ 'o', 'x' }, 'gh', gs.select_hunk, { desc = 'Git: select hunk' })
     end,
   },
 }

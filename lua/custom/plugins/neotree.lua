@@ -8,7 +8,7 @@ return {
     'MunifTanjim/nui.nvim',
   },
   keys = {
-    { '<leader>fe', '<cmd>Neotree toggle<cr>', desc = 'Explorer NeoTree (cwd)' },
+    { '<leader>fe', '<cmd>Neotree toggle<cr>', desc = 'Neotree: Open file explorer (cwd)' },
   },
   init = function()
     if vim.fn.argc() == 1 then
