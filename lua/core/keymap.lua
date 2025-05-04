@@ -39,7 +39,7 @@ nmap('<leader>om', '<cmd>Mason<cr>', 'Mason')
 -- tabs
 nmap = util.map('n', 'Terminal: ')
 nmap('<leader>tt', '<cmd>term<cr>', 'Open')
-nmap('<leader>tn', '<cmd>tabnew<cr><cmd>term<cr>', 'Open in new tab')
+nmap('<leader>te', '<cmd>tabnew<cr><cmd>term<cr>', 'Open in new tab')
 nmap('<leader>tv', '<cmd>vsplit<cr><cmd>term<cr>', 'Open in vertical')
 nmap('<leader>th', '<cmd>split<cr><cmd>term<cr>', 'Open in horizontal')
 vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { silent = true })

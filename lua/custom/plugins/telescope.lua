@@ -7,6 +7,7 @@ return {
     { '<leader>ff', '<cmd>Telescope find_files<cr>', desc = 'Telescope: Find git files' },
     { '<leader>fs', '<cmd>Telescope live_grep<cr>', desc = 'Telescope: Search by grep' },
     { '<leader>fd', '<cmd>Telescope diagnostics<cr>', desc = 'Telescope: Search dagnostics' },
+    { '<leader>fd', '<cmd>Telescope lsp_document_symbols<cr>', desc = 'Telescope: Search symbols' },
     { '<leader>fgf', '<cmd>Telescope git_files<cr>', desc = 'Telescope: Search all files' },
     { '<leader>fgs', '<cmd>Telescope git_status<cr>', desc = 'Telescope: Find git status' },
     { '<leader>fgc', '<cmd>Telescope git_commits<cr>', desc = 'Telescope: Find git commits' },
