@@ -32,6 +32,19 @@ vim.api.nvim_create_autocmd({ 'TermClose', 'TermLeave' }, {
   end,
   group = nvim_terminal,
 })
+
+local minimap = vim.api.nvim_create_augroup('minimap', { clear = true })
+
+vim.api.nvim_create_autocmd({ 'VimEnter', 'BufEnter' }, {
+  callback = function()
+    local ok, _ = pcall(require, 'mini.map')
+    if not ok then
+      return
+    end
+    MiniMap.open()
+  end,
+  group = minimap,
+})
 --
 -- local write_group = vim.api.nvim_create_augroup('custom_write', { clear = true })
 -- vim.api.nvim_create_autocmd('BufWritePre', {
