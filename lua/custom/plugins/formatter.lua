@@ -48,6 +48,10 @@ return {
         require 'formatter.defaults.prettierd',
       },
 
+      html = {
+        require 'formatter.defaults.prettierd',
+      },
+
       svelte = {
         require 'formatter.defaults.prettierd',
       },
